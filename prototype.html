@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .prototype-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            margin: auto;
+        }
+
+        h1 {
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 14px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #progress-bar {
+            width: 0;
+            height: 10px;
+            background-color: #2ecc71; /* Success color */
+            margin-top: 20px;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        #explore-features {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #feature-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #feature-list li {
+            margin: 0 10px;
+        }
+
+        #feedback-section {
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        #user-feedback {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #feedback-form {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #team-info {
+            text-align: left;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        #team-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #team-info li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>IntelliStep - Innovation of Shoe Sole Prototype</title>
+</head>
+<body>
+    <div class="prototype-container">
+        <h1>IntelliStep - Innovation of Shoe Sole Prototype</h1>
+        <p>Experience the future of footwear with IntelliStep, a groundbreaking shoe sole designed to enhance comfort and address common issues faced by shoe users.</p>
+        
+        <div id="test-container">
+            <p>Click the button below to test the IntelliStep prototype and feel the difference!</p>
+            <button id="testButton">Test IntelliStep Prototype</button>
+            <div id="progress-bar"></div>
+        </div>
+        
+        <div id="explore-features">
+            <p>Explore more features of IntelliStep:</p>
+            <ul id="feature-list">
+                <li>👟 Comfortable Fit</li>
+                <li>🌬️ Breathable Material</li>
+                <li>🕰️ Durable Design</li>
+            </ul>
+        </div>
+
+        <div id="feedback-section">
+            <h3>User Feedback</h3>
+            <div id="user-feedback">
+                <!-- Feedback from users will be dynamically added here -->
+            </div>
+            <button id="showFeedbackForm">Provide Your Feedback</button>
+            <form id="feedback-form">
+                <label for="feedbackComment">Comment:</label>
+                <textarea id="feedbackComment" rows="4" cols="50"></textarea><br>
+                <label for="feedbackRating">Rating (1-5):</label>
+                <input type="number" id="feedbackRating" min="1" max="5" required><br>
+                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            </form>
+        </div>
+
+        <div id="team-info">
+            <h3>Project Team</h3>
+            <!-- ... (Team information remains unchanged) ... -->
+        </div>
+
+        <script>
+            var testContainer = document.getElementById('test-container');
+            var progressBar = document.getElementById('progress-bar');
+            var exploreFeatures = document.getElementById('explore-features');
+            var feedbackSection = document.getElementById('feedback-section');
+            var feedbackForm = document.getElementById('feedback-form');
+            var userFeedback = document.getElementById('user-feedback');
+
+            document.getElementById('testButton').addEventListener('click', function () {
+                // Simulate testing the prototype
+                var progress = 0;
+                var interval = setInterval(function () {
+                    progress += 10;
+                    progressBar.style.width = progress + '%';
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        testContainer.style.display = 'none';
+                        exploreFeatures.style.display = 'block';
+                        feedbackSection.style.display = 'block';
+                    }
+                }, 500);
+            });
+
+            document.getElementById('showFeedbackForm').addEventListener('click', function () {
+                feedbackForm.style.display = 'block';
+            });
+
+            function submitFeedback() {
+                var comment = document.getElementById('feedbackComment').value;
+                var rating = document.getElementById('feedbackRating').value;
+
+                var feedbackItem = document.createElement('div');
+                feedbackItem.innerHTML = '<p><strong>Comment:</strong> ' + comment + '<br><strong>Rating:</strong> ' + rating + '</p>';
+                userFeedback.appendChild(feedbackItem);
+
+                feedbackForm.style.display = 'none';
+            }
+        </script>
+    </div>
+</body>
+</html>
